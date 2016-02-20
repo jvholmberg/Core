@@ -65,5 +65,18 @@ var xCore = {
 				return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]); 
 			}).join('&');
 		}
+	},
+
+	console: {
+		$console:undefined,
+
+		init:function(){
+			$('body').append('<div class="x-core-console-wrapper" style="position:fixed;bottom:0;left:0;right:0;height:30%;overflow:auto;background-color:#383434;border-top:10px solid #383434"><ul class="x-core-console" style="margin:0;padding:0;"></ul></div>');
+			this.$console = $('.x-core-console');
+		},
+		print:function(success, title, desc) {
+			this.$console.append('<li class="x-core-console-msg" style="display:block;padding:5px;overflow:hidden;"><span class="x-core-console-title" style="display:block;float:left;padding-right:10px;color:'+(success?'#0cff00':'#ff0000')+'">'+title+'</span><span class="x-core-console-desc" style="display:block;float:left;color:#fff;">'+desc+'</span></li>');
+		}
+
 	}
 };
